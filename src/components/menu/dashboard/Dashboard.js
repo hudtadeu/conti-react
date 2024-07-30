@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Chart from 'react-apexcharts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './styleDashboard.css';
 
 const Dashboard = () => {
@@ -25,7 +27,7 @@ const Dashboard = () => {
           offset: -5,
         },
         donut: {
-          size: '60%',
+          size: '73%',
           labels: {
             show: true,
             name: {
@@ -53,21 +55,30 @@ const Dashboard = () => {
       breakpoint: 480,
       options: {
         chart: {
-          width: 200
+          width: 200,
         },
         legend: {
           position: 'bottom',
           horizontalAlign: 'left',
         },
-      }
+      },
     }],
     legend: {
       show: false,
     },
     grid: {
       padding: {
-        bottom: 1
-      }
+        bottom: 1,
+      },
+    },
+    fill: {
+      type: 'solid',
+    },
+    stroke: {
+      show: false,
+    },
+    dataLabels: {
+      enabled: false,
     },
   };
 
@@ -94,8 +105,8 @@ const Dashboard = () => {
       series: [23, 16, 9, 9, 15, 9, 17],
       options: {
         ...commonOptions,
-        labels: ['Falta Pedido Compra', 'Aprovação', 'Diferença Valor', 'Diferença Quantidade', 'Conversao Unidade Medida', 'Falta Ordem Produção', 'Cadastro ERP Datasul'],
-        colors: ['#375a7f', '#00a65a', '#f39c12', '#dd4b39', '#00c0ef', '#f39c12', '#d2d6de'],
+        labels: ['Falta Pedido Compra', 'Aprovação', 'Diferença Valor', 'Diferença Quantidade', 'Conversao Un. Medida', 'Falta Ordem Produção', 'Cadastro ERP Datasul'],
+        colors: ['#375a7f', '#00a65a', '#f39c12', '#dd4b39', '#00c0ef', '#f39c12', '#8a8f98'],
       },
       title: "Auditoria"
     },
@@ -113,7 +124,7 @@ const Dashboard = () => {
       options: {
         ...commonOptions,
         labels: ['Matéria Prima', 'Uso e Consumo', 'Aplicação Direta', 'Manutenção', 'Facility', 'Embalagens'],
-        colors: ['#375a7f', '#00a65a', '#f39c12', '#dd4b39', '#00c0ef', '#d2d6de'],
+        colors: ['#375a7f', '#00a65a', '#f39c12', '#dd4b39', '#00c0ef', '#8a8f98'],
       },
       title: "Ocorrências por Linhas de Produtos"
     },
@@ -157,8 +168,13 @@ const Dashboard = () => {
   return (
     <div id="dashboard">
       {data.map((chartData, index) => (
-        <div key={index} className="chart-container" onClick={() => handleChartClick(chartData)}>
-          <h2 className="chart-title">{chartData.title}</h2>
+        <div key={index} className="chart-container">
+          <div className="chart-header">
+            <h2 className="chart-title">{chartData.title}</h2>
+            <div className="chart-menu" onClick={() => handleChartClick(chartData)}>
+              <FontAwesomeIcon icon={faEllipsisH} className="chart-menu-icon" title="Filtrar Gráfico" />
+            </div>
+          </div>
           <div className="chart-wrapper">
             <Chart options={chartData.options} series={chartData.series} type="donut" height="290" />
           </div>
@@ -167,26 +183,11 @@ const Dashboard = () => {
       {selectedChart && (
         <div className="modal">
           <div className="modal-content">
-            <button className="modal-close" onClick={closeModal}>X</button>
+            <button className="modal-close" onClick={closeModal}>
+            <FontAwesomeIcon icon={faTimes} />
+            </button>
             <h2 className="chart-title-modal">{selectedChart.title}</h2>
             <div className="modal-body">
-              <div className="chart-wrapper-modal">
-                <Chart 
-                  options={{
-                    ...selectedChart.options,
-                    legend: { 
-                      show: true,
-                      position: 'bottom',
-                      horizontalAlign: 'right',
-                      fontSize: '12px',
-                    },
-                  }} 
-                  series={selectedChart.series} 
-                  type="donut" 
-                  height="600" 
-                  width="440"
-                />
-              </div>
               <div className="filters">
                 <div className="filter">
                   <label>Período Inicial:</label>
@@ -223,6 +224,7 @@ const Dashboard = () => {
                   </select>
                 </div>
               </div>
+              <button className="button-save">Salvar</button>
             </div>
           </div>
         </div>

@@ -18,19 +18,24 @@ const Menu = () => {
   };
 
   const handleMenuItemClick = (item) => {
-    setActiveItem(item);
-    setSubmenuOpen((prev) => (prev === item ? '' : item));
+    if (isOpen) {
+      setActiveItem(item);
+      setSubmenuOpen((prev) => (prev === item ? '' : item));
+    } else {
+      setActiveItem(item);
+      setSubmenuOpen('');
+    }
   };
 
   return (
     <nav id="sidebar" className={isOpen ? 'open-sidebar' : ''}>
       <div id="sidebar_content">
         <div id="logo">
-          <img src="/conti_transparente.png" id="conti_transparente" alt="Logo" />
-          <div id="welcome">
-            <FontAwesomeIcon icon={faUserCircle} />
-            <span className="item-description">Bem vindo, </span>
-          </div>
+          <img 
+            src={isOpen ? "/conti_branca_transparente.png" : "/conti_branca_transparente_cc.png"} 
+            id="conti_transparente" 
+            alt="Logo" 
+          />
         </div>
         <ul id="side_items">
           <li
@@ -38,7 +43,7 @@ const Menu = () => {
             onClick={() => handleMenuItemClick('Dashboard')}
           >
             <a href="#">
-              <FontAwesomeIcon icon={faChartPie} />
+              <FontAwesomeIcon icon={faChartPie} className="menu-icon" />
               <span className="item-description">Painel de Controle</span>
             </a>
           </li>
@@ -46,7 +51,7 @@ const Menu = () => {
             className={`side-item ${activeItem === 'Cadastros' ? 'active' : ''}`}
           >
             <a href="#" onClick={() => handleMenuItemClick('Cadastros')}>
-              <FontAwesomeIcon icon={faAddressBook} />
+              <FontAwesomeIcon icon={faAddressBook} className="menu-icon" />
               <span className="item-description">Cadastros</span>
               {isOpen && (
                 <FontAwesomeIcon
@@ -70,7 +75,7 @@ const Menu = () => {
             className={`side-item ${activeItem === 'Rotinas' ? 'active' : ''}`}
           >
             <a href="#" onClick={() => handleMenuItemClick('Rotinas')}>
-              <FontAwesomeIcon icon={faRepeat} />
+              <FontAwesomeIcon icon={faRepeat} className="menu-icon" />
               <span className="item-description">Rotinas</span>
               {isOpen && (
                 <FontAwesomeIcon
@@ -94,7 +99,7 @@ const Menu = () => {
             className={`side-item ${activeItem === 'Tarefas' ? 'active' : ''}`}
           >
             <a href="#" onClick={() => handleMenuItemClick('Tarefas')}>
-              <FontAwesomeIcon icon={faTasks} />
+              <FontAwesomeIcon icon={faTasks} className="menu-icon" />
               <span className="item-description">Tarefas</span>
               {isOpen && (
                 <FontAwesomeIcon
@@ -118,7 +123,7 @@ const Menu = () => {
             className={`side-item ${activeItem === 'Consultas' ? 'active' : ''}`}
           >
             <a href="#" onClick={() => handleMenuItemClick('Consultas')}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="menu-icon" />
               <span className="item-description">Consultas</span>
               {isOpen && (
                 <FontAwesomeIcon
@@ -142,7 +147,7 @@ const Menu = () => {
             className={`side-item ${activeItem === 'Relatórios' ? 'active' : ''}`}
           >
             <a href="#" onClick={() => handleMenuItemClick('Relatórios')}>
-              <FontAwesomeIcon icon={faChartBar} />
+              <FontAwesomeIcon icon={faChartBar} className="menu-icon" />
               <span className="item-description">Relatórios</span>
               {isOpen && (
                 <FontAwesomeIcon
@@ -166,7 +171,7 @@ const Menu = () => {
             className={`side-item ${activeItem === 'Configurações' ? 'active' : ''}`}
           >
             <a href="#" onClick={() => handleMenuItemClick('Configurações')}>
-              <FontAwesomeIcon icon={faGear} />
+              <FontAwesomeIcon icon={faGear} className="menu-icon" />
               <span className="item-description">Configurações</span>
             </a>
           </li>
@@ -177,8 +182,8 @@ const Menu = () => {
       </div>
       <div id="logout">
         <button id="logout_btn">
-          <FontAwesomeIcon icon={faRightFromBracket} />
-          <span className="item-description">Logout</span>
+          <FontAwesomeIcon icon={faRightFromBracket} className="menu-icon" />
+          <span className="item-description">Sair</span>
         </button>
       </div>
     </nav>
