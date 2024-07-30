@@ -151,6 +151,7 @@ body {
 
 #open_btn_icon {
     transition: transform .3s ease;
+    padding: 3px;
 }
 
 .open-sidebar #open_btn_icon {
