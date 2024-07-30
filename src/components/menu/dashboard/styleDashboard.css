@@ -65,7 +65,7 @@
   }
   
   .chart-menu-icon {
-    font-size: 15px;
+    font-size: 17px;
     color: #333;
     position: relative;
   }
@@ -151,7 +151,7 @@
   
   .modal-close {
     position: absolute;
-    top: 3px;
+    top: 6px;
     right: 8px;
     background: transparent;
     border: none;
