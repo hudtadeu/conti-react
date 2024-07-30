@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartLine, faUserCircle, faGear, faChevronRight, faChevronDown, faRightFromBracket, faDoorOpen, faWarehouse, faCubes, faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faUserCircle, faGear, faChevronRight, faChevronDown, faRightFromBracket, faDoorOpen, faWarehouse, faCubes, faFileInvoiceDollar, faAddressBook, faTasks, faMagnifyingGlass, faChartBar, faChartPie, faRepeat } from '@fortawesome/free-solid-svg-icons';
 import './styleMenu.css';
 
 const Menu = () => {
@@ -14,24 +14,12 @@ const Menu = () => {
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
-    setSubmenuOpen(''); // Close any open submenu when sidebar is toggled
+    setSubmenuOpen('');
   };
 
   const handleMenuItemClick = (item) => {
     setActiveItem(item);
-    setSubmenuOpen(''); // Close any open submenu when an item is clicked
-  };
-
-  const handleMouseEnter = (item) => {
-    if (isOpen) {
-      setSubmenuOpen(item);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (isOpen) {
-      setSubmenuOpen('');
-    }
+    setSubmenuOpen((prev) => (prev === item ? '' : item));
   };
 
   return (
@@ -41,7 +29,7 @@ const Menu = () => {
           <img src="/conti_transparente.png" id="conti_transparente" alt="Logo" />
           <div id="welcome">
             <FontAwesomeIcon icon={faUserCircle} />
-            <span className="item-description">Fulano de tal</span>
+            <span className="item-description">Bem vindo, </span>
           </div>
         </div>
         <ul id="side_items">
@@ -50,26 +38,24 @@ const Menu = () => {
             onClick={() => handleMenuItemClick('Dashboard')}
           >
             <a href="#">
-              <FontAwesomeIcon icon={faChartLine} />
-              <span className="item-description">Dashboard</span>
+              <FontAwesomeIcon icon={faChartPie} />
+              <span className="item-description">Painel de Controle</span>
             </a>
           </li>
           <li
-            className={`side-item ${activeItem === 'Portaria' ? 'active' : ''}`}
-            onMouseEnter={() => handleMouseEnter('Portaria')}
-            onMouseLeave={handleMouseLeave}
+            className={`side-item ${activeItem === 'Cadastros' ? 'active' : ''}`}
           >
-            <a href="#" onClick={() => handleMenuItemClick('Portaria')}>
-              <FontAwesomeIcon icon={faDoorOpen} />
-              <span className="item-description">Portaria</span>
+            <a href="#" onClick={() => handleMenuItemClick('Cadastros')}>
+              <FontAwesomeIcon icon={faAddressBook} />
+              <span className="item-description">Cadastros</span>
               {isOpen && (
                 <FontAwesomeIcon
-                  icon={submenuOpen === 'Portaria' ? faChevronDown : faChevronRight}
+                  icon={submenuOpen === 'Cadastros' ? faChevronDown : faChevronRight}
                   className="submenu-icon"
                 />
               )}
             </a>
-            {submenuOpen === 'Portaria' && (
+            {submenuOpen === 'Cadastros' && (
               <ul className="submenu">
                 <li className="submenu-item">
                   <a href="#">Submenu 1</a>
@@ -81,21 +67,19 @@ const Menu = () => {
             )}
           </li>
           <li
-            className={`side-item ${activeItem === 'Almoxarifado' ? 'active' : ''}`}
-            onMouseEnter={() => handleMouseEnter('Almoxarifado')}
-            onMouseLeave={handleMouseLeave}
+            className={`side-item ${activeItem === 'Rotinas' ? 'active' : ''}`}
           >
-            <a href="#" onClick={() => handleMenuItemClick('Almoxarifado')}>
-              <FontAwesomeIcon icon={faWarehouse} />
-              <span className="item-description">Almoxarifado</span>
+            <a href="#" onClick={() => handleMenuItemClick('Rotinas')}>
+              <FontAwesomeIcon icon={faRepeat} />
+              <span className="item-description">Rotinas</span>
               {isOpen && (
                 <FontAwesomeIcon
-                  icon={submenuOpen === 'Almoxarifado' ? faChevronDown : faChevronRight}
+                  icon={submenuOpen === 'Rotinas' ? faChevronDown : faChevronRight}
                   className="submenu-icon"
                 />
               )}
             </a>
-            {submenuOpen === 'Almoxarifado' && (
+            {submenuOpen === 'Rotinas' && (
               <ul className="submenu">
                 <li className="submenu-item">
                   <a href="#">Submenu 1</a>
@@ -107,21 +91,19 @@ const Menu = () => {
             )}
           </li>
           <li
-            className={`side-item ${activeItem === 'Suprimentos' ? 'active' : ''}`}
-            onMouseEnter={() => handleMouseEnter('Suprimentos')}
-            onMouseLeave={handleMouseLeave}
+            className={`side-item ${activeItem === 'Tarefas' ? 'active' : ''}`}
           >
-            <a href="#" onClick={() => handleMenuItemClick('Suprimentos')}>
-              <FontAwesomeIcon icon={faCubes} />
-              <span className="item-description">Suprimentos</span>
+            <a href="#" onClick={() => handleMenuItemClick('Tarefas')}>
+              <FontAwesomeIcon icon={faTasks} />
+              <span className="item-description">Tarefas</span>
               {isOpen && (
                 <FontAwesomeIcon
-                  icon={submenuOpen === 'Suprimentos' ? faChevronDown : faChevronRight}
+                  icon={submenuOpen === 'Tarefas' ? faChevronDown : faChevronRight}
                   className="submenu-icon"
                 />
               )}
             </a>
-            {submenuOpen === 'Suprimentos' && (
+            {submenuOpen === 'Tarefas' && (
               <ul className="submenu">
                 <li className="submenu-item">
                   <a href="#">Submenu 1</a>
@@ -133,21 +115,43 @@ const Menu = () => {
             )}
           </li>
           <li
-            className={`side-item ${activeItem === 'Fiscal' ? 'active' : ''}`}
-            onMouseEnter={() => handleMouseEnter('Fiscal')}
-            onMouseLeave={handleMouseLeave}
+            className={`side-item ${activeItem === 'Consultas' ? 'active' : ''}`}
           >
-            <a href="#" onClick={() => handleMenuItemClick('Fiscal')}>
-              <FontAwesomeIcon icon={faFileInvoiceDollar} />
-              <span className="item-description">Fiscal</span>
+            <a href="#" onClick={() => handleMenuItemClick('Consultas')}>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <span className="item-description">Consultas</span>
               {isOpen && (
                 <FontAwesomeIcon
-                  icon={submenuOpen === 'Fiscal' ? faChevronDown : faChevronRight}
+                  icon={submenuOpen === 'Consultas' ? faChevronDown : faChevronRight}
                   className="submenu-icon"
                 />
               )}
             </a>
-            {submenuOpen === 'Fiscal' && (
+            {submenuOpen === 'Consultas' && (
+              <ul className="submenu">
+                <li className="submenu-item">
+                  <a href="#">Submenu 1</a>
+                </li>
+                <li className="submenu-item">
+                  <a href="#">Submenu 2</a>
+                </li>
+              </ul>
+            )}
+          </li>
+          <li
+            className={`side-item ${activeItem === 'Relatórios' ? 'active' : ''}`}
+          >
+            <a href="#" onClick={() => handleMenuItemClick('Relatórios')}>
+              <FontAwesomeIcon icon={faChartBar} />
+              <span className="item-description">Relatórios</span>
+              {isOpen && (
+                <FontAwesomeIcon
+                  icon={submenuOpen === 'Relatórios' ? faChevronDown : faChevronRight}
+                  className="submenu-icon"
+                />
+              )}
+            </a>
+            {submenuOpen === 'Relatórios' && (
               <ul className="submenu">
                 <li className="submenu-item">
                   <a href="#">Submenu 1</a>
@@ -160,8 +164,6 @@ const Menu = () => {
           </li>
           <li
             className={`side-item ${activeItem === 'Configurações' ? 'active' : ''}`}
-            onMouseEnter={() => handleMouseEnter('Configurações')}
-            onMouseLeave={handleMouseLeave}
           >
             <a href="#" onClick={() => handleMenuItemClick('Configurações')}>
               <FontAwesomeIcon icon={faGear} />
