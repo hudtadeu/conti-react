@@ -1,18 +1,16 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTimes, faCog } from '@fortawesome/free-solid-svg-icons';
-import './styleComparativeParameters.css';
+import { faCheck, faMinus, faCog } from '@fortawesome/free-solid-svg-icons';
+import './styleControleChegadaEmpresa.css';
 
-const ComparativeParameters = () => {
+const ControleChegadaEmpresa = () => {
   const { chartType, dataPointIndex } = useParams();
 
   const getChartData = (chartType, dataPointIndex) => {
-    // Fetch or get chart data based on chartType and dataPointIndex
-    // Example data
     const data = {
-      0: {
-        title: "XML's Recebidos a (x Dias)",
+      6: {
+        title: "Controle Chegada na Empresa",
         columns: [
           { name: 'Usuario', label: 'Usuário' },
           { name: 'Estabelecimento', label: 'Estabelecimento' },
@@ -29,7 +27,6 @@ const ComparativeParameters = () => {
           { name: 'RecFisico', label: 'Rec.Físico' },
         ],
         rows: [
-          // Example row data
           { 
             Usuario: 'User1', 
             Estabelecimento: 'Estabelecimento 1', 
@@ -60,10 +57,8 @@ const ComparativeParameters = () => {
             RecFiscal: false, 
             RecFisico: true 
           },
-          // ... other rows
         ],
       },
-      // ... other chart types
     };
     return data[chartType] || {};
   };
@@ -71,12 +66,12 @@ const ComparativeParameters = () => {
   const chartData = getChartData(chartType, dataPointIndex);
 
   const renderBooleanIcon = (value) => (
-    value ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faTimes} />
+    value ? <FontAwesomeIcon icon={faCheck} className="icon-check" /> : <FontAwesomeIcon icon={faMinus} className="icon-minus" />
   );
 
   return (
     <div className="comparative-parameters">
-      <h1>XML's Recebidos</h1>
+      <h1>Controle Chegada na Empresa</h1>
       <button className="btn-new">Criar Novo</button>
       <table className="comparative-table">
         <thead>
@@ -84,7 +79,7 @@ const ComparativeParameters = () => {
             {chartData.columns && chartData.columns.map((col, index) => (
               <th key={index}>{col.label}</th>
             ))}
-            <th>
+            <th className="config-icon-container">
               <FontAwesomeIcon icon={faCog} className="config-icon" />
             </th>
           </tr>
@@ -108,4 +103,4 @@ const ComparativeParameters = () => {
   );
 };
 
-export default ComparativeParameters;
+export default ControleChegadaEmpresa;

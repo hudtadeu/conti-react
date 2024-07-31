@@ -12,10 +12,30 @@ const Dashboard = () => {
   useEffect(() => {
     const handleDataPointClick = (event) => {
       const target = event.target;
-      if (target && target.getAttribute('index')) {
-        const chartIndex = target.getAttribute('index');
-        const dataPointIndex = target.getAttribute('j');
-        navigate(`/comparative-parameters/${chartIndex}/${dataPointIndex}`);
+      const chartContainer = target.closest('.chart-container');
+
+      if (chartContainer) {
+        const chartIndex = chartContainer.getAttribute('data-chart-index');
+        if (target && target.getAttribute('index')) {
+          const dataPointIndex = target.getAttribute('j');
+          if (chartIndex === '0') {
+            navigate(`/xml-recebidos/${chartIndex}/${dataPointIndex}`);
+          } else if (chartIndex === '1') {
+            navigate(`/ocorrencias-negocio/${chartIndex}/${dataPointIndex}`);
+          } else if (chartIndex === '2') {
+            navigate(`/auditoria/${chartIndex}/${dataPointIndex}`);
+          } else if (chartIndex === '3') {
+            navigate(`/ocorrencias-tipo-doc-fiscais/${chartIndex}/${dataPointIndex}`);
+          } else if (chartIndex === '4') {
+            navigate(`/ocorrencias-linhas-produtos/${chartIndex}/${dataPointIndex}`);
+          } else if (chartIndex === '5') {
+            navigate(`/fluxo-doc-fiscais-estabelecimento/${chartIndex}/${dataPointIndex}`);
+          } else if (chartIndex === '6') {
+            navigate(`/controle-chegada-empresa/${chartIndex}/${dataPointIndex}`);
+          } else if (chartIndex === '7') {
+            navigate(`/documentos-atualizados-dia/${chartIndex}/${dataPointIndex}`);
+          }                         
+        }
       }
     };
 
@@ -187,7 +207,7 @@ const Dashboard = () => {
   return (
     <div id="dashboard">
       {data.map((chartData, index) => (
-        <div key={index} className="chart-container">
+        <div key={index} className="chart-container" data-chart-index={index}>
           <div className="chart-header">
             <h2 className="chart-title">{chartData.title}</h2>
             <div className="chart-menu" onClick={() => handleChartClick({ ...chartData, index })}>

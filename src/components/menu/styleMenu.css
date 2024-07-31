@@ -50,13 +50,13 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+    margin-top: 2px;
   }
   
   #logo img {
     height: 30px; 
     margin-bottom: -5px;
     transition: width .5s;
-    margin-top: 2px;
   }
   
   #conti_transparente {
@@ -136,9 +136,8 @@
     background-color: #fff;
     color: #00274D;
     border-radius: 100%;
-    width: 20px;
-    height: 20px;
-    border: none;
+    width: 22px;
+    height: 22px;
     cursor: pointer;
     transition: background 0.3s;
   }
@@ -146,6 +145,7 @@
   #open_btn_icon {
     transition: transform .3s ease;
     padding: 3px;
+    font-size: 12px;
   }
   
   .open-sidebar #open_btn_icon {
@@ -180,7 +180,7 @@
     width: 145px; 
     height: 80px; 
     margin-bottom: -8px;
-    margin-top: -10px;
+    margin-top: -17px;
   }
   
   .sidebar-closed #dashboard {
