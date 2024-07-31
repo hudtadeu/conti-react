@@ -272,10 +272,13 @@ const Dashboard = () => {
                 <div className="filter">
                   <label>Tipo de Documento:</label>
                   <select>
-                    <option value="cte">Cte</option>
-                    <option value="nfe">Nfe</option>
-                    <option value="nfse">NFSe</option>
-                    <option value="nfe3">NFe3</option>
+                    <option value="">Selecione</option>
+                    <option value="99">Todos</option>
+                    <option value="1">NF-e</option>
+                    <option value="2">CT-e</option>
+                    <option value="3">CT-e OS</option>
+                    <option value="4">NFS-e</option>
+                    <option value="5">NF3e</option>
                   </select>
                 </div>
                 <div className="filter">
