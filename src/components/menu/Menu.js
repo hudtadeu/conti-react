@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine, faUserCircle, faGear, faChevronRight, faChevronDown, faRightFromBracket, faDoorOpen, faWarehouse, faCubes, faFileInvoiceDollar, faAddressBook, faTasks, faMagnifyingGlass, faChartBar, faChartPie, faRepeat } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 import './styleMenu.css';
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState('Dashboard');
   const [submenuOpen, setSubmenuOpen] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.classList.toggle('sidebar-closed', !isOpen);
@@ -17,7 +19,7 @@ const Menu = () => {
     setSubmenuOpen('');
   };
 
-  const handleMenuItemClick = (item) => {
+  const handleMenuItemClick = (item, path) => {
     if (isOpen) {
       setActiveItem(item);
       setSubmenuOpen((prev) => (prev === item ? '' : item));
@@ -25,6 +27,7 @@ const Menu = () => {
       setActiveItem(item);
       setSubmenuOpen('');
     }
+    navigate(path);
   };
 
   return (
@@ -40,7 +43,7 @@ const Menu = () => {
         <ul id="side_items">
           <li
             className={`side-item ${activeItem === 'Dashboard' ? 'active' : ''}`}
-            onClick={() => handleMenuItemClick('Dashboard')}
+            onClick={() => handleMenuItemClick('Dashboard', '/dashboard')}
           >
             <a href="#">
               <FontAwesomeIcon icon={faChartPie} className="menu-icon" />
@@ -50,7 +53,7 @@ const Menu = () => {
           <li
             className={`side-item ${activeItem === 'Cadastros' ? 'active' : ''}`}
           >
-            <a href="#" onClick={() => handleMenuItemClick('Cadastros')}>
+            <a href="#" onClick={() => handleMenuItemClick('Cadastros', '/cadastros')}>
               <FontAwesomeIcon icon={faAddressBook} className="menu-icon" />
               <span className="item-description">Cadastros</span>
               {isOpen && (
@@ -74,7 +77,7 @@ const Menu = () => {
           <li
             className={`side-item ${activeItem === 'Rotinas' ? 'active' : ''}`}
           >
-            <a href="#" onClick={() => handleMenuItemClick('Rotinas')}>
+            <a href="#" onClick={() => handleMenuItemClick('Rotinas', '/rotinas')}>
               <FontAwesomeIcon icon={faRepeat} className="menu-icon" />
               <span className="item-description">Rotinas</span>
               {isOpen && (
@@ -98,7 +101,7 @@ const Menu = () => {
           <li
             className={`side-item ${activeItem === 'Tarefas' ? 'active' : ''}`}
           >
-            <a href="#" onClick={() => handleMenuItemClick('Tarefas')}>
+            <a href="#" onClick={() => handleMenuItemClick('Tarefas', '/tarefas')}>
               <FontAwesomeIcon icon={faTasks} className="menu-icon" />
               <span className="item-description">Tarefas</span>
               {isOpen && (
@@ -122,7 +125,7 @@ const Menu = () => {
           <li
             className={`side-item ${activeItem === 'Consultas' ? 'active' : ''}`}
           >
-            <a href="#" onClick={() => handleMenuItemClick('Consultas')}>
+            <a href="#" onClick={() => handleMenuItemClick('Consultas', '/consultas')}>
               <FontAwesomeIcon icon={faMagnifyingGlass} className="menu-icon" />
               <span className="item-description">Consultas</span>
               {isOpen && (
@@ -146,7 +149,7 @@ const Menu = () => {
           <li
             className={`side-item ${activeItem === 'Relatórios' ? 'active' : ''}`}
           >
-            <a href="#" onClick={() => handleMenuItemClick('Relatórios')}>
+            <a href="#" onClick={() => handleMenuItemClick('Relatórios', '/relatorios')}>
               <FontAwesomeIcon icon={faChartBar} className="menu-icon" />
               <span className="item-description">Relatórios</span>
               {isOpen && (
@@ -170,7 +173,7 @@ const Menu = () => {
           <li
             className={`side-item ${activeItem === 'Configurações' ? 'active' : ''}`}
           >
-            <a href="#" onClick={() => handleMenuItemClick('Configurações')}>
+            <a href="#" onClick={() => handleMenuItemClick('Configurações', '/configuracoes')}>
               <FontAwesomeIcon icon={faGear} className="menu-icon" />
               <span className="item-description">Configurações</span>
             </a>

@@ -1,11 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 import './styleDashboard.css';
 
 const Dashboard = () => {
   const [selectedChart, setSelectedChart] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleDataPointClick = (event) => {
+      const target = event.target;
+      if (target && target.getAttribute('index')) {
+        const chartIndex = target.getAttribute('index');
+        const dataPointIndex = target.getAttribute('j');
+        navigate(`/comparative-parameters/${chartIndex}/${dataPointIndex}`);
+      }
+    };
+
+    document.addEventListener('click', handleDataPointClick);
+
+    return () => {
+      document.removeEventListener('click', handleDataPointClick);
+    };
+  }, [navigate]);
 
   const commonOptions = {
     chart: {
@@ -171,7 +190,7 @@ const Dashboard = () => {
         <div key={index} className="chart-container">
           <div className="chart-header">
             <h2 className="chart-title">{chartData.title}</h2>
-            <div className="chart-menu" onClick={() => handleChartClick(chartData)}>
+            <div className="chart-menu" onClick={() => handleChartClick({ ...chartData, index })}>
               <FontAwesomeIcon icon={faEllipsisH} className="chart-menu-icon" title="Filtrar Gráfico" />
             </div>
           </div>
@@ -184,7 +203,7 @@ const Dashboard = () => {
         <div className="modal">
           <div className="modal-content">
             <button className="modal-close" onClick={closeModal}>
-            <FontAwesomeIcon icon={faTimes} />
+              <FontAwesomeIcon icon={faTimes} />
             </button>
             <h2 className="chart-title-modal">{selectedChart.title}</h2>
             <div className="modal-body">
