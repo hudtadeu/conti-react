@@ -64,6 +64,12 @@ const Dashboard = () => {
       pie: {
         dataLabels: {
           offset: -5,
+          formatter: (val, opts) => {
+            return opts.w.globals.series[opts.seriesIndex]
+          },
+          style: {
+            colors: ['#FFF']
+          },
         },
         donut: {
           size: '73%',
@@ -98,12 +104,23 @@ const Dashboard = () => {
         },
         legend: {
           position: 'bottom',
-          horizontalAlign: 'left',
+          horizontalAlign: 'center',
         },
       },
     }],
     legend: {
-      show: false,
+      show: true,
+      position: 'bottom',
+      horizontalAlign: 'center',
+      fontSize: '10px',
+      markers: {
+        width: 8,
+        height: 8,
+      },
+      itemMargin: {
+        horizontal: 5,
+        vertical: 2,
+      },
     },
     grid: {
       padding: {
@@ -117,7 +134,15 @@ const Dashboard = () => {
       show: false,
     },
     dataLabels: {
-      enabled: false,
+      enabled: true,
+      formatter: (val, opts) => {
+        return opts.w.globals.series[opts.seriesIndex];
+      },
+      style: {
+        fontSize: '14px',
+        fontWeight: 'bold',
+        colors: ['#fff'],
+      },
     },
   };
 
