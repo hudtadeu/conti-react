@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTimes, faCog } from '@fortawesome/free-solid-svg-icons';
 import './styleComparativeParameters.css';
 
 const ComparativeParameters = () => {
@@ -76,14 +76,17 @@ const ComparativeParameters = () => {
 
   return (
     <div className="comparative-parameters">
-      <h1>Parâmetros comparativo XML</h1>
-      <button className="btn-new">Novo</button>
+      <h1>XML's Recebidos</h1>
+      <button className="btn-new">Criar Novo</button>
       <table className="comparative-table">
         <thead>
           <tr>
             {chartData.columns && chartData.columns.map((col, index) => (
               <th key={index}>{col.label}</th>
             ))}
+            <th>
+              <FontAwesomeIcon icon={faCog} className="config-icon" />
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -94,6 +97,9 @@ const ComparativeParameters = () => {
                   {typeof row[col.name] === 'boolean' ? renderBooleanIcon(row[col.name]) : row[col.name]}
                 </td>
               ))}
+              <td className="table-actions">
+                <button className="btn-details">Detalhes</button>
+              </td>
             </tr>
           ))}
         </tbody>

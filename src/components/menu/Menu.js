@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartLine, faUserCircle, faGear, faChevronRight, faChevronDown, faRightFromBracket, faDoorOpen, faWarehouse, faCubes, faFileInvoiceDollar, faAddressBook, faTasks, faMagnifyingGlass, faChartBar, faChartPie, faRepeat } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faUserCircle, faGear, faChevronRight, faChevronDown, faRightFromBracket, faDoorOpen, faWarehouse, faCubes, faFileInvoiceDollar, faAddressBook, faTasks, faMagnifyingGlass, faChartBar, faChartPie, faRepeat, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import './styleMenu.css';
 
 const Menu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [activeItem, setActiveItem] = useState('Dashboard');
   const [submenuOpen, setSubmenuOpen] = useState('');
   const navigate = useNavigate();
@@ -47,7 +47,7 @@ const Menu = () => {
           >
             <a href="#">
               <FontAwesomeIcon icon={faChartPie} className="menu-icon" />
-              <span className="item-description">Painel de Controle</span>
+              <span className="item-description">Monitor Xml Loader</span>
             </a>
           </li>
           <li
@@ -180,7 +180,7 @@ const Menu = () => {
           </li>
         </ul>
         <button id="open_btn" onClick={toggleSidebar}>
-          <FontAwesomeIcon icon={faChevronRight} id="open_btn_icon" />
+          <FontAwesomeIcon icon={isOpen ? faChevronLeft : faChevronRight} id="open_btn_icon" />
         </button>
       </div>
       <div id="logout">
