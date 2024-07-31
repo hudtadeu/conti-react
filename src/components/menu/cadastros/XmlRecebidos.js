@@ -105,7 +105,7 @@ const XmlRecebidos = () => {
                 <td className="table-actions">
                   <div className="dropdown-container">
                     <button className="btn-actions" onClick={(event) => handleDropdownToggle(index, event)}>
-                      Ações <FontAwesomeIcon icon={faChevronDown} />
+                      Ações <FontAwesomeIcon icon={faChevronDown} className="icon" />
                     </button>
                     {activeRow === index && (
                       <DropdownPortal>
