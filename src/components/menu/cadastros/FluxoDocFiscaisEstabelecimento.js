@@ -16,7 +16,7 @@ const FluxoDocFiscaisEstabelecimento = () => {
         columns: [
           { name: 'Tipo', label: 'Tipo' },
           { name: 'Situacao', label: 'Situação' },
-          { name: 'Farol', label: 'Farol' },
+          { name: 'Portaria', label: 'Portaria' },
           { name: 'Entrega', label: 'Entrega' },
           { name: 'Status', label: 'Status' },
           { name: 'TempoStatus', label: 'Tempo no Status' },
@@ -56,7 +56,7 @@ const FluxoDocFiscaisEstabelecimento = () => {
           {
             Tipo: 'NF-e',
             Situacao: 'Autorizada',
-            Faz: 'Aguardando',
+            Portaria: 'Dentro da Fábrica',
             Entrega: 'Entrega',
             Status: 'Pendente',
             TempoStatus: '11 dias',
@@ -95,7 +95,7 @@ const FluxoDocFiscaisEstabelecimento = () => {
           {
             Tipo: 'CT-e',
             Situacao: 'Autorizada',
-            Faz: 'Em Trânsito',
+            Portaria: 'Em Trânsito',
             Entrega: 'Entrega',
             Status: 'Pendente',
             TempoStatus: '1 dia',
