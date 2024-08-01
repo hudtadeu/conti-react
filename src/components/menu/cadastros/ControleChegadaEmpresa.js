@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faMinus, faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './styleControleChegadaEmpresa.css';
 
 const ControleChegadaEmpresa = () => {

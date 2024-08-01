@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faMinus, faTimes, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTimes, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import './styleDetalhesXml.css';
 
 const DetalhesXml = () => {
@@ -659,7 +659,7 @@ const DetalhesXml = () => {
   };
 
   const renderBooleanIcon = (value) => (
-    value ? <FontAwesomeIcon icon={faCheck} className="icon-check" /> : <FontAwesomeIcon icon={faMinus} className="icon-minus" />
+    value ? <FontAwesomeIcon icon={faCheck} className="icon-check" /> : <FontAwesomeIcon icon={faCheck} className="icon-minus" />
   );
 
   const openModal = (row) => {
