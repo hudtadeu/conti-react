@@ -16,7 +16,7 @@ const OcorrenciasNegocio = () => {
         columns: [
           { name: 'Tipo', label: 'Tipo' },
           { name: 'Situacao', label: 'Situação' },
-          { name: 'Faz', label: 'Faz' },
+          { name: 'Farol', label: 'Farol' },
           { name: 'Entrega', label: 'Entrega' },
           { name: 'Status', label: 'Status' },
           { name: 'TempoStatus', label: 'Tempo no Status' },
@@ -154,6 +154,7 @@ const OcorrenciasNegocio = () => {
   };
 
   return (
+    <div className="page-container">
     <div className="comparative-parameters">
       <h1>Ocorrências por Área de Negócio</h1>
       <button className="btn-new">Criar Novo</button>
@@ -243,6 +244,7 @@ const OcorrenciasNegocio = () => {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 };

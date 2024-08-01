@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Menu from './components/menu/Menu';
 import Dashboard from './components/menu/dashboard/Dashboard';
 import XmlRecebidos from './components/menu/cadastros/XmlRecebidos';
+import DetalhesXml from './components/menu/cadastros/DetalhesXml';
 import OcorrenciasNegocio from './components/menu/cadastros/OcorrenciasNegocio';
 import Auditoria from './components/menu/cadastros/Auditoria';
 import OcorrenciasTipoDocFiscais from './components/menu/cadastros/OcorrenciasTipoDocFiscais';
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/" element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/xml-recebidos/:chartType/:dataPointIndex" element={<XmlRecebidos />} />
+            <Route path="/detalhes-xml/:id" element={<DetalhesXml />} /> {/* Nova rota para detalhes */}
             <Route path="/ocorrencias-negocio/:chartType/:dataPointIndex" element={<OcorrenciasNegocio />} />
             <Route path="/auditoria/:chartType/:dataPointIndex" element={<Auditoria />} />
             <Route path="/ocorrencias-tipo-doc-fiscais/:chartType/:dataPointIndex" element={<OcorrenciasTipoDocFiscais />} />

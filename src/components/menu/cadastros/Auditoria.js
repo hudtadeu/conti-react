@@ -154,6 +154,7 @@ const Auditoria = () => {
   };
 
   return (
+    <div className="page-container">
     <div className="comparative-parameters">
       <h1>Auditoria</h1>
       <button className="btn-new">Criar Novo</button>
@@ -243,6 +244,7 @@ const Auditoria = () => {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 };

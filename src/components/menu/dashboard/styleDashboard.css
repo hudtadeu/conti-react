@@ -11,6 +11,7 @@
     font-family: "Montserrat", sans-serif;
     background-color: #ebecee;
     color: #333;
+    overflow-y: hidden; 
   }
   
   #dashboard {
