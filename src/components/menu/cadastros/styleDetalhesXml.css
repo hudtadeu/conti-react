@@ -58,6 +58,14 @@
     margin-top: 6px;
     transition: width 0.3s ease;
   }
+
+  .detalhes-table tr:nth-child(even) {
+    background-color: #fff;
+  }
+  
+  .detalhes-table tr:nth-child(odd) {
+    background-color: #f5f6f7;
+  }
   
   .detalhes-table th,
   .detalhes-table td {
