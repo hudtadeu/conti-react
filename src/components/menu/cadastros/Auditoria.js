@@ -16,7 +16,7 @@ const Auditoria = () => {
         columns: [
           { name: 'Tipo', label: 'Tipo' },
           { name: 'Situacao', label: 'Situação' },
-          { name: 'Faz', label: 'Faz' },
+          { name: 'Farol', label: 'Farol' },
           { name: 'Entrega', label: 'Entrega' },
           { name: 'Status', label: 'Status' },
           { name: 'TempoStatus', label: 'Tempo no Status' },
@@ -140,7 +140,7 @@ const Auditoria = () => {
   const chartData = getChartData(chartType, dataPointIndex);
 
   const renderBooleanIcon = (value) => (
-    value ? <FontAwesomeIcon icon={faCheck} className="icon-check" /> : <FontAwesomeIcon icon={faMinus} className="icon-minus" />
+    value ? <FontAwesomeIcon icon={faCheck} className="icon-check" /> : <FontAwesomeIcon icon={faCheck} className="icon-minus" />
   );
 
   const openModal = () => {

@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faMinus, faTimes, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import './styleDetalhesXml.css';
 
 const DetalhesXml = () => {
   const { id } = useParams();
+  const [selectedRow, setSelectedRow] = useState(null);
 
   const data = {
     title: "Detalhes do XML",
     generalInfo: [
-      { name: 'Tipo', value: 'Compras' },
+      { name: 'Tipo', value: 'NF-e' },
       { name: 'Nota Fiscal', value: '0001' },
       { name: 'Serie', value: '01' },
       { name: 'Emissao', value: '2024-07-28' },
@@ -115,17 +116,25 @@ const DetalhesXml = () => {
     value ? <FontAwesomeIcon icon={faCheck} className="icon-check" /> : <FontAwesomeIcon icon={faMinus} className="icon-minus" />
   );
 
+  const openModal = (row) => {
+    setSelectedRow(row);
+  };
+
+  const closeModal = () => {
+    setSelectedRow(null);
+  };
+
   return (
     <div className="detalhes-page-container">
       <h1>{data.title}</h1>
-      <div className="detalhes-table-container">
-      <div class="table-container">
+      <div className="general-info-container">
         <table className="general-info-table">
           <thead>
             <tr>
               {data.generalInfo.map((info, index) => (
                 <th key={index}>{info.name}</th>
               ))}
+              <th>Filtrar</th>
             </tr>
           </thead>
           <tbody>
@@ -133,10 +142,14 @@ const DetalhesXml = () => {
               {data.generalInfo.map((info, index) => (
                 <td key={index}>{info.value}</td>
               ))}
+              <td>
+                <FontAwesomeIcon icon={faEllipsisH} onClick={() => openModal(data.generalInfo)} className="icon-ellipsish" />
+              </td>
             </tr>
           </tbody>
         </table>
-        </div>
+      </div>
+      <div className="detalhes-table-container">
         <table className="detalhes-table">
           <thead>
             <tr>
@@ -158,7 +171,59 @@ const DetalhesXml = () => {
           </tbody>
         </table>
       </div>
-      </div>
+      {selectedRow && (
+        <div className="modal">
+          <div className="modal-content">
+            <button className="modal-close" onClick={closeModal}>
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <h2 className="chart-title-modal">Detalhes Detalhes Xml</h2>
+            <div className="modal-body">
+              <div className="filters">
+                <div className="filter">
+                  <label>Período Inicial:</label>
+                  <input type="date" />
+                </div>
+                <div className="filter">
+                  <label>Período Final:</label>
+                  <input type="date" />
+                </div>
+                <div className="filter">
+                  <label>Estabelecimento:</label>
+                  <input type="text" />
+                </div>
+                <div className="filter">
+                  <label>Fornecedor:</label>
+                  <input type="text" />
+                </div>
+                <div className="filter">
+                  <label>Tipo de Documento:</label>
+                  <select>
+                    <option value="">Selecione</option>
+                    <option value="99">Todos</option>
+                    <option value="1">NF-e</option>
+                    <option value="2">CT-e</option>
+                    <option value="3">CT-e OS</option>
+                    <option value="4">NFS-e</option>
+                    <option value="5">NF3e</option>
+                  </select>
+                </div>
+                <div className="filter">
+                  <label>Tipos de Erros:</label>
+                  <select>
+                    <option value="suprimento">Suprimento</option>
+                    <option value="fiscal">Fiscal</option>
+                    <option value="producao">Produção</option>
+                    <option value="almoxarifado">Almoxarifado</option>
+                  </select>
+                </div>
+              </div>
+              <button className="button-save">Salvar</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
