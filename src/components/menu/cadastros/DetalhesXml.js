@@ -15,7 +15,7 @@ const DetalhesXml = () => {
       { name: 'Nota Fiscal', value: '0001' },
       { name: 'Serie', value: '01' },
       { name: 'Emissao', value: '2024-07-28' },
-      { name: 'Razao Social', value: 'Fornecedor A' },
+      { name: 'Razao Social', value: 'JIAINDY INDÚSTRIA DE PLÁSTICOS LTDA.' },
       { name: 'Chave Acesso', value: '12345678901234567890123456789012345678901234' },
       { name: 'Situacao', value: 'Autorizada' },
       { name: 'Portaria', value: 'Na Empresa' },
