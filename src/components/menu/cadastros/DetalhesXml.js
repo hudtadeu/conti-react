@@ -19,7 +19,7 @@ const DetalhesXml = () => {
       { name: 'Razao Social', value: 'JIAINDY INDÚSTRIA DE PLÁSTICOS LTDA.' },
       { name: 'Chave Acesso', value: '12345678901234567890123456789012345678901234' },
       { name: 'Situacao', value: 'Autorizada' },
-      { name: 'Portaria', value: 'Na Empresa' },
+      { name: 'Localizacao', value: 'Na Empresa' },
       { name: 'Entrega', value: 'Entrega' },
       { name: 'Status', value: 'Pendente' },
       { name: 'Tempo no Status', value: '5 dias' },
@@ -732,7 +732,7 @@ const DetalhesXml = () => {
               {data.generalInfo.map((info, index) => (
                 <th key={index}>{info.name}</th>
               ))}
-              <th>Filtrar</th>
+              <th>Filtrar Documento</th>
             </tr>
           </thead>
           <tbody>
@@ -775,7 +775,7 @@ const DetalhesXml = () => {
             <button className="modal-close" onClick={closeModal}>
               <FontAwesomeIcon icon={faTimes} />
             </button>
-            <h2 className="chart-title-modal">Detalhes Detalhes Xml</h2>
+            <h2 className="chart-title-modal">Detalhes Xml</h2>
             <div className="modal-body">
               <div className="filters">
                 <div className="filter">
