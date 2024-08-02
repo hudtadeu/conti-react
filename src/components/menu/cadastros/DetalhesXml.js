@@ -110,7 +110,7 @@ const DetalhesXml = () => {
         OutrasDespesas: 0.00,
       },
       {
-        Origem: 'Compras',
+        Origem: 'Fornecedor',
         Produto: 'Produto A',
         Descricao: 'Descrição do Produto A',
         UN: 'UN',
@@ -194,7 +194,7 @@ const DetalhesXml = () => {
         OutrasDespesas: 0.00,
       },
       {
-        Origem: 'Compras',
+        Origem: 'Fornecedor',
         Produto: 'Produto A',
         Descricao: 'Descrição do Produto A',
         UN: 'UN',
@@ -278,7 +278,7 @@ const DetalhesXml = () => {
         OutrasDespesas: 0.00,
       },
       {
-        Origem: 'Compras',
+        Origem: 'Fornecedor',
         Produto: 'Produto A',
         Descricao: 'Descrição do Produto A',
         UN: 'UN',
@@ -362,7 +362,7 @@ const DetalhesXml = () => {
         OutrasDespesas: 0.00,
       },
       {
-        Origem: 'Compras',
+        Origem: 'Fornecedor',
         Produto: 'Produto A',
         Descricao: 'Descrição do Produto A',
         UN: 'UN',
@@ -446,7 +446,7 @@ const DetalhesXml = () => {
         OutrasDespesas: 0.00,
       },
       {
-        Origem: 'Compras',
+        Origem: 'Fornecedor',
         Produto: 'Produto A',
         Descricao: 'Descrição do Produto A',
         UN: 'UN',
@@ -530,7 +530,7 @@ const DetalhesXml = () => {
         OutrasDespesas: 0.00,
       },
       {
-        Origem: 'Compras',
+        Origem: 'Fornecedor',
         Produto: 'Produto A',
         Descricao: 'Descrição do Produto A',
         UN: 'UN',
@@ -614,7 +614,7 @@ const DetalhesXml = () => {
         OutrasDespesas: 0.00,
       },
       {
-        Origem: 'Compras',
+        Origem: 'Fornecedor',
         Produto: 'Produto A',
         Descricao: 'Descrição do Produto A',
         UN: 'UN',
