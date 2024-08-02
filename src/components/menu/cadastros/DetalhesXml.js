@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTimes, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTimes, faEllipsisH, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './styleDetalhesXml.css';
 
 const DetalhesXml = () => {
   const { id } = useParams();
+  const navigate = useNavigate(); 
   const [selectedRow, setSelectedRow] = useState(null);
 
   const data = {
@@ -712,9 +713,18 @@ const DetalhesXml = () => {
     setSelectedRow(null);
   };
 
+  const handleGoBack = () => {
+    navigate(-1);  
+  };
+
   return (
     <div className="detalhes-page-container">
-      <h1>{data.title}</h1>
+      <div className="header-container">
+        <h1>{data.title}</h1>
+        <button className="back-button" onClick={handleGoBack}>
+          <FontAwesomeIcon icon={faArrowLeft} /> Voltar
+        </button>
+      </div>
       <div className="general-info-container">
         <table className="general-info-table">
           <thead>
