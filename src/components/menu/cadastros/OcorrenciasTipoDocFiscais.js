@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCheck, faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './styleOcorrenciasTipoDocFiscais.css';
 
 const OcorrenciasTipoDocFiscais = () => {
@@ -509,10 +509,19 @@ const OcorrenciasTipoDocFiscais = () => {
     navigate(`/detalhes-xml/${id}`);
   };
 
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="page-container">
     <div className="comparative-parameters">
-      <h1>Ocorrências por Tipo de Doc. Fiscais</h1>
+    <div className="header-comparative">
+        <h1>Ocorrências por Tipo de Doc. Fiscais</h1>
+        <button className="btn-back" onClick={handleGoBack}>
+        <FontAwesomeIcon icon={faArrowLeft} /> Voltar
+        </button>
+        </div>
       <button className="btn-new">Criar Novo</button>
       <div className="comparative-table-container">
         <table className="comparative-table">
