@@ -75,9 +75,10 @@
 .comparative-table th {
   background-color: #00274D;
   color: #fff;
-  text-align: left;
-  font-size: 10px;
+  overflow-x: auto;
+  max-width: 82vw; 
   padding: 10px;
+  font-size: 10px;
 }
 
 .comparative-table th:nth-child(n+11):nth-child(-n+32) {

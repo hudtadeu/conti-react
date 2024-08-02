@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartLine, faUserCircle, faGear, faChevronRight, faChevronDown, faRightFromBracket, faDoorOpen, faWarehouse, faCubes, faFileInvoiceDollar, faAddressBook, faTasks, faMagnifyingGlass, faChartBar, faChartPie, faRepeat, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faGear, faChevronRight, faChevronDown, faRightFromBracket, faAddressBook, faTasks, faMagnifyingGlass, faChartBar, faChartPie, faRepeat, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import './styleMenu.css';
 
