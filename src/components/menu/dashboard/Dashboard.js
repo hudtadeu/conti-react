@@ -265,11 +265,9 @@ const Dashboard = () => {
                     <label>Tipo Documento Fiscal:</label>
                     <select>
                       <option value="">Selecione</option>
-                      <option value="nfe">NF-e</option>
-                      <option value="cte">CT-e</option>
-                      <option value="cteos">CT-e OS</option>
-                      <option value="nfse">NFS-e</option>
-                      <option value="nf3e">NF3e</option>
+                      <option value="nfe">NFe</option>
+                      <option value="nfs">Nfs</option>
+                      <option value="cte">CTe</option>
                     </select>
                   </div>
                   <div className="filter">
@@ -296,10 +294,12 @@ const Dashboard = () => {
                       <option value="fiscal">Fiscal</option>
                       <option value="producao">Produção</option>
                       <option value="almoxarifado">Almoxarifado</option>
+                      <option value="pcp">PCP</option>
+                      <option value="qualidade">Qualidade</option>
                     </select>
                   </div>
                   <div className="filter">
-                    <label>Situação Dcto Fiscal:</label>
+                    <label>Situação Documento Fiscal:</label>
                     <select>
                       <option value="pendente">Pendente</option>
                       <option value="atualizado">Atualizado</option>

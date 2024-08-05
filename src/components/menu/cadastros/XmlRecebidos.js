@@ -581,6 +581,7 @@ const XmlRecebidos = () => {
                       <option value="nfe">NFe</option>
                       <option value="nfs">Nfs</option>
                       <option value="cte">CTe</option>
+                      <option value="cte">CTe</option>
                     </select>
                   </div>
                   <div className="filter">
@@ -607,6 +608,8 @@ const XmlRecebidos = () => {
                       <option value="fiscal">Fiscal</option>
                       <option value="producao">Produção</option>
                       <option value="almoxarifado">Almoxarifado</option>
+                      <option value="pcp">PCP</option>
+                      <option value="qualidade">Qualidade</option>
                     </select>
                   </div>
                   <div className="filter">

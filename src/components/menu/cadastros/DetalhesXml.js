@@ -770,57 +770,81 @@ const DetalhesXml = () => {
         </table>
       </div>
       {selectedRow && (
-        <div className="modal">
-          <div className="modal-content">
-            <button className="modal-close" onClick={closeModal}>
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-            <h2 className="chart-title-modal">Detalhes Xml</h2>
-            <div className="modal-body">
-              <div className="filters">
-                <div className="filter">
-                  <label>Período Inicial:</label>
-                  <input type="date" />
+          <div className="modal">
+            <div className="modal-content">
+              <button className="modal-close" onClick={closeModal}>
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+              <h2 className="chart-title-modal">Detalhes Xml</h2>
+              <div className="modal-body">
+                <div className="filters">
+                  <div className="filter">
+                    <label>Estabelecimento:</label>
+                    <input type="text" />
+                  </div>
+                  <div className="filter">
+                    <label>Código Fornecedor:</label>
+                    <input type="text" />
+                  </div>
+                  <div className="filter">
+                    <label>Tipo Documento Fiscal:</label>
+                    <select>
+                      <option value="">Selecione</option>
+                      <option value="nfe">NFe</option>
+                      <option value="nfs">Nfs</option>
+                      <option value="cte">CTe</option>
+                    </select>
+                  </div>
+                  <div className="filter">
+                    <label>Período Inicial:</label>
+                    <input type="date" />
+                  </div>
+                  <div className="filter">
+                    <label>Período Final:</label>
+                    <input type="date" />
+                  </div>
+                  <div className="filter">
+                    <label>Por Departamento:</label>
+                    <select>
+                      <option value="suprimento">Suprimento</option>
+                      <option value="fiscal">Fiscal</option>
+                      <option value="producao">Produção</option>
+                      <option value="almoxarifado">Almoxarifado</option>
+                    </select>
+                  </div>
+                  <div className="filter">
+                    <label>Por Tipo de Erro:</label>
+                    <select>
+                      <option value="suprimento">Suprimento</option>
+                      <option value="fiscal">Fiscal</option>
+                      <option value="producao">Produção</option>
+                      <option value="almoxarifado">Almoxarifado</option>
+                      <option value="pcp">PCP</option>
+                      <option value="qualidade">Qualidade</option>
+                    </select>
+                  </div>
+                  <div className="filter">
+                    <label>Situação Dcto Fiscal:</label>
+                    <select>
+                      <option value="pendente">Pendente</option>
+                      <option value="atualizado">Atualizado</option>
+                      <option value="cancelado">Cancelado</option>
+                    </select>
+                  </div>
+                  <div className="filter">
+                    <label>Localização Veículo:</label>
+                    <input type="text" />
+                  </div>
+                  <div className="filter">
+                    <label>Período de Tempo Documento Parado:</label>
+                    <input type="text" />
+                  </div>
                 </div>
-                <div className="filter">
-                  <label>Período Final:</label>
-                  <input type="date" />
-                </div>
-                <div className="filter">
-                  <label>Estabelecimento:</label>
-                  <input type="text" />
-                </div>
-                <div className="filter">
-                  <label>Fornecedor:</label>
-                  <input type="text" />
-                </div>
-                <div className="filter">
-                  <label>Tipo de Documento:</label>
-                  <select>
-                    <option value="">Selecione</option>
-                    <option value="99">Todos</option>
-                    <option value="1">NF-e</option>
-                    <option value="2">CT-e</option>
-                    <option value="3">CT-e OS</option>
-                    <option value="4">NFS-e</option>
-                    <option value="5">NF3e</option>
-                  </select>
-                </div>
-                <div className="filter">
-                  <label>Tipos de Erros:</label>
-                  <select>
-                    <option value="suprimento">Suprimento</option>
-                    <option value="fiscal">Fiscal</option>
-                    <option value="producao">Produção</option>
-                    <option value="almoxarifado">Almoxarifado</option>
-                  </select>
-                </div>
+                <button className="button-save">Salvar</button>
               </div>
-              <button className="button-save">Salvar</button>
             </div>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 };

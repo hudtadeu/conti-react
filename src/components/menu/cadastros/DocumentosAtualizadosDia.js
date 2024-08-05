@@ -607,6 +607,8 @@ const DocumentosAtualizadosDia = () => {
                       <option value="fiscal">Fiscal</option>
                       <option value="producao">Produção</option>
                       <option value="almoxarifado">Almoxarifado</option>
+                      <option value="pcp">PCP</option>
+                      <option value="qualidade">Qualidade</option>
                     </select>
                   </div>
                   <div className="filter">

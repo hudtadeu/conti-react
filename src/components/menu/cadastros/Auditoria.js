@@ -612,9 +612,12 @@ const Auditoria = () => {
                   <div className="filter">
                     <label>Situação Dcto Fiscal:</label>
                     <select>
-                      <option value="pendente">Pendente</option>
-                      <option value="atualizado">Atualizado</option>
-                      <option value="cancelado">Cancelado</option>
+                    <option value="suprimento">Suprimento</option>
+                      <option value="fiscal">Fiscal</option>
+                      <option value="producao">Produção</option>
+                      <option value="almoxarifado">Almoxarifado</option>
+                      <option value="pcp">PCP</option>
+                      <option value="qualidade">Qualidade</option>
                     </select>
                   </div>
                   <div className="filter">
