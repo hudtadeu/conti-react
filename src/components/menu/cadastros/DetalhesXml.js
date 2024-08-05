@@ -741,7 +741,7 @@ const DetalhesXml = () => {
                     </select>
                   </div>
                   <div className="filter">
-                    <label>Situação Dcto Fiscal:</label>
+                    <label>Situação Documento Fiscal:</label>
                     <select>
                       <option value="pendente">Pendente</option>
                       <option value="atualizado">Atualizado</option>
