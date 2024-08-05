@@ -612,7 +612,7 @@ const OcorrenciasLinhasProdutos = () => {
                     </select>
                   </div>
                   <div className="filter">
-                    <label>Situação Dcto Fiscal:</label>
+                    <label>Situação Documento Fiscal:</label>
                     <select>
                       <option value="pendente">Pendente</option>
                       <option value="atualizado">Atualizado</option>
@@ -624,7 +624,7 @@ const OcorrenciasLinhasProdutos = () => {
                     <input type="text" />
                   </div>
                   <div className="filter">
-                    <label>Período de Tempo Docto Parado:</label>
+                    <label>Período de Tempo Documento Parado:</label>
                     <input type="text" />
                   </div>
                 </div>
