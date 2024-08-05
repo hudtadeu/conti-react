@@ -25,6 +25,11 @@
     padding: 20px;
     position: fixed;
     z-index: 1;
+    margin-left: 80px;
+  }
+
+  #sidebar.open-sidebar {
+    width: 250px; 
   }
   
   #sidebar {
@@ -39,6 +44,12 @@
     transition: all .5s;
     min-width: 80px;
     z-index: 2;
+  }
+
+  #sidebar_content {
+    flex-grow: 1;
+    padding: 12px;
+    overflow-y: auto;
   }
   
   #sidebar_content {
@@ -223,3 +234,11 @@
     display: none;
   }
   
+  .fixed-logout-btn {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 20px);
+    text-align: center;
+  }

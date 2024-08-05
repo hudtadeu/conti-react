@@ -184,7 +184,7 @@ const Menu = () => {
         </button>
       </div>
       <div id="logout">
-        <button id="logout_btn">
+        <button id="logout_btn" class="fixed-logout-btn">
           <FontAwesomeIcon icon={faRightFromBracket} className="menu-icon" />
           <span className="item-description">Sair</span>
         </button>

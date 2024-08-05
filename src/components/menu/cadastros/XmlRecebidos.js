@@ -581,7 +581,6 @@ const XmlRecebidos = () => {
                       <option value="nfe">NFe</option>
                       <option value="nfs">Nfs</option>
                       <option value="cte">CTe</option>
-                      <option value="cte">CTe</option>
                     </select>
                   </div>
                   <div className="filter">

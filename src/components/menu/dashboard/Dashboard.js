@@ -311,7 +311,7 @@ const Dashboard = () => {
                     <input type="text" />
                   </div>
                   <div className="filter">
-                    <label>Período de Tempo Docto Parado:</label>
+                    <label>Período de Tempo Documento Parado:</label>
                     <input type="text" />
                   </div>
                 </div>

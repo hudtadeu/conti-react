@@ -96,19 +96,19 @@
   
   @media (max-width: 1200px) {
     #dashboard {
-      grid-template-columns: repeat(3, 1fr);
+      justify-content: center;
     }
   }
   
   @media (max-width: 990px) {
     #dashboard {
-      grid-template-columns: repeat(2, 1fr);
+      justify-content: center;
     }
   }
   
   @media (max-width: 600px) {
     #dashboard {
-      grid-template-columns: 1fr;
+      justify-content: center;
     }
   }
   
