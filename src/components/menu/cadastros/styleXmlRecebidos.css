@@ -168,12 +168,10 @@
   }
 }
 
-.sidebar-closed .comparative-table {
-  width: calc(100% - 20px); 
+.sidebar-closed .comparative-table-container {
+  max-width: 91vw; 
 }
 
-
-/* Styles for table header groups */
 .comparative-table .title-table th {
   background-color: #004080;
 }

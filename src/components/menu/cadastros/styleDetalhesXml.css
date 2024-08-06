@@ -10,6 +10,10 @@
     align-items: center;
     border-bottom: 2px solid #0098c9;
   }
+
+  .sidebar-closed .detalhes-table-container {
+    max-width: 91vw; 
+  }
   
   .back-button {
     background-color: #fff;
