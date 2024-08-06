@@ -192,3 +192,13 @@
 .comparative-table .title-table th:nth-child(33) {
   background-color: #00274D;
 }
+
+.status-label, .tipo-label {
+  display: inline-block;
+  padding: 3px 7px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+}
+
