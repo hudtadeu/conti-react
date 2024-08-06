@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes, faEllipsisH, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { getStatusInfo, getTipoDocumentoInfo } from '../../utils';
 import './styleDetalhesXml.css';
 
 const DetalhesXml = () => {
@@ -634,6 +635,32 @@ const DetalhesXml = () => {
     navigate(-1);  
   };
 
+  const renderGeneralInfoCell = (info) => {
+    if (info.name === 'Status') {
+      const { text, color } = getStatusInfo(info.value);
+      return (
+        <td key={info.name}>
+          <span className="status-label" style={{ backgroundColor: color }}>{text}</span>
+        </td>
+      );
+    }
+    if (info.name === 'Tipo') {
+      const { text, color } = getTipoDocumentoInfo(info.value);
+      return (
+        <td key={info.name}>
+          <span className="tipo-label" style={{ backgroundColor: color }}>{text}</span>
+        </td>
+      );
+    }
+    return <td key={info.name}>{info.value}</td>;
+  };
+
+  const renderTableCell = (col, row) => (
+    <td key={col.name}>
+      {typeof row[col.name] === 'boolean' ? renderBooleanIcon(row[col.name]) : row[col.name]}
+    </td>
+  );
+
   return (
     <div className="detalhes-page-container">
       <div className="header-container">
@@ -654,9 +681,7 @@ const DetalhesXml = () => {
           </thead>
           <tbody>
             <tr>
-              {data.generalInfo.map((info, index) => (
-                <td key={index}>{info.value}</td>
-              ))}
+              {data.generalInfo.map((info) => renderGeneralInfoCell(info))}
               <td>
                 <FontAwesomeIcon icon={faEllipsisH} onClick={() => openModal(data.generalInfo)} className="icon-ellipsish" />
               </td>
@@ -676,11 +701,7 @@ const DetalhesXml = () => {
           <tbody>
             {data.rows.map((row, index) => (
               <tr key={index}>
-                {data.columns.map((col, colIndex) => (
-                  <td key={colIndex}>
-                    {typeof row[col.name] === 'boolean' ? renderBooleanIcon(row[col.name]) : row[col.name]}
-                  </td>
-                ))}
+                {data.columns.map((col) => renderTableCell(col, row))}
               </tr>
             ))}
           </tbody>
