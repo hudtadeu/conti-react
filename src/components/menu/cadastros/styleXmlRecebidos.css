@@ -1,8 +1,3 @@
-.comparative-parameters {
-  font-family: 'Montserrat', sans-serif;
-  transition: all 0.3s ease;
-}
-
 .page-container {
   padding: 20px;
   overflow-y: auto;
@@ -76,8 +71,8 @@
 }
 
 .comparative-table-container {
-    overflow-x: auto;
-    max-width: 82vw; 
+  overflow-x: auto;
+  max-width: 82vw; 
 }
 
 .comparative-table tr:nth-child(even) {
@@ -174,7 +169,7 @@
 }
 
 .sidebar-closed .comparative-table {
-  width: 100%;
+  width: calc(100% - 20px); 
 }
 
 
