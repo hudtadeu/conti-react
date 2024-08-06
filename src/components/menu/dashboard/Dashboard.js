@@ -229,7 +229,7 @@ const Dashboard = () => {
     setSelectedChart(null);
   };
 
-  const handleModalClick = (e) => {
+    const handleModalClick = (e) => {
     if (e.target.classList.contains('modal')) {
       closeModal();
     }
@@ -246,7 +246,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="chart-wrapper">
-            <Chart options={chartData.options} series={chartData.series} type="donut" height="290" />
+            <Chart options={chartData.options} series={chartData.series} type="donut" height="296" />
           </div>
         </div>
       ))}
