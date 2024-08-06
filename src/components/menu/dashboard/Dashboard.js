@@ -229,6 +229,12 @@ const Dashboard = () => {
     setSelectedChart(null);
   };
 
+  const handleModalClick = (e) => {
+    if (e.target.classList.contains('modal')) {
+      closeModal();
+    }
+  };
+
   return (
     <div id="dashboard">
       {data.map((chartData, index) => (
@@ -245,7 +251,7 @@ const Dashboard = () => {
         </div>
       ))}
        {selectedChart && (
-          <div className="modal">
+          <div className="modal" onClick={handleModalClick}>
             <div className="modal-content">
               <button className="modal-close" onClick={closeModal}>
                 <FontAwesomeIcon icon={faTimes} />

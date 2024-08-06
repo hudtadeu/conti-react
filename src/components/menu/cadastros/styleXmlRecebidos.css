@@ -5,6 +5,8 @@
 
 .page-container {
   padding: 20px;
+  overflow-y: auto;
+  max-height: 100vh; /* Adjust as needed */
 }
 
 .comparative-parameters h1 {
@@ -201,4 +203,3 @@
   font-weight: 500;
   text-align: center;
 }
-

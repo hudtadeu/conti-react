@@ -505,6 +505,11 @@ const XmlRecebidos = () => {
     setIsModalOpen(false);
     setSelectedChart(null);
   };
+  const handleModalClick = (e) => {
+    if (e.target.classList.contains('modal')) {
+      closeModal();
+    }
+  };
 
   const navigateToDetails = (id) => {
     navigate(`/detalhes-xml/${id}`);
@@ -579,7 +584,7 @@ const XmlRecebidos = () => {
           </table>
         </div>
         {isModalOpen && (
-          <div className="modal">
+          <div className="modal" onClick={handleModalClick}>
             <div className="modal-content">
               <button className="modal-close" onClick={closeModal}>
                 <FontAwesomeIcon icon={faTimes} />
