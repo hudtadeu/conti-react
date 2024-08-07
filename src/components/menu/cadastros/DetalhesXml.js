@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTimes, faEllipsisH, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTimes, faEllipsisH, faArrowLeft, faBars } from '@fortawesome/free-solid-svg-icons';
 import './styleDetalhesXml.css';
 
 const DetalhesXml = () => {
   const { id } = useParams();
   const navigate = useNavigate(); 
   const [selectedRow, setSelectedRow] = useState(null);
+  const [dropdownVisible, setDropdownVisible] = useState(null);
 
   const data = {
     title: "Detalhes do XML",
@@ -65,6 +66,7 @@ const DetalhesXml = () => {
       { name: 'Seguro', label: 'Seguro' },
       { name: 'Vlfrete', label: 'Vl Frete' },
       { name: 'OutrasDespesas', label: 'Outras Desp.' },
+      { name: 'Acoes', label: 'Ações' }, // Nova coluna
     ],
     rows: [
       {
@@ -655,8 +657,7 @@ const DetalhesXml = () => {
         Vlfrete: 0.00,
         OutrasDespesas: 0.00,
       },
-  
-      // Adicione outras linhas conforme necessário
+      // Outras linhas
     ],
   };
 
@@ -680,6 +681,14 @@ const DetalhesXml = () => {
 
   const handleGoBack = () => {
     navigate(-1);  
+  };
+
+  const toggleDropdown = (index) => {
+    if (dropdownVisible === index) {
+      setDropdownVisible(null);
+    } else {
+      setDropdownVisible(index);
+    }
   };
 
   return (
@@ -727,6 +736,20 @@ const DetalhesXml = () => {
                 {data.columns.map((col, colIndex) => (
                   <td key={colIndex}>
                     {typeof row[col.name] === 'boolean' ? renderBooleanIcon(row[col.name]) : row[col.name]}
+                    {col.name === 'Acoes' && row.Origem === 'Compras' && (
+                      <div className="acoes-dropdown-container">
+                        <FontAwesomeIcon icon={faBars} className="acoes-icon" onClick={() => toggleDropdown(index)} />
+                        {dropdownVisible === index && (
+                          <ul className="acoes-dropdown">
+                            <li>Ação 1</li>
+                            <li>Ação 2</li>
+                            <li>Ação 3</li>
+                            <li>Ação 4</li>
+                            <li>Ação 5</li>
+                          </ul>
+                        )}
+                      </div>
+                    )}
                   </td>
                 ))}
               </tr>
@@ -735,81 +758,81 @@ const DetalhesXml = () => {
         </table>
       </div>
       {selectedRow && (
-          <div className="modal" onClick={handleModalClick}>
-            <div className="modal-content">
-              <button className="modal-close" onClick={closeModal}>
-                <FontAwesomeIcon icon={faTimes} />
-              </button>
-              <h2 className="chart-title-modal">Detalhes Xml</h2>
-              <div className="modal-body">
-                <div className="filters">
-                  <div className="filter">
-                    <label>Estabelecimento:</label>
-                    <input type="text" />
-                  </div>
-                  <div className="filter">
-                    <label>Código Fornecedor:</label>
-                    <input type="text" />
-                  </div>
-                  <div className="filter">
-                    <label>Tipo Documento Fiscal:</label>
-                    <select>
-                      <option value="">Selecione</option>
-                      <option value="nfe">NFe</option>
-                      <option value="nfs">Nfs</option>
-                      <option value="cte">CTe</option>
-                    </select>
-                  </div>
-                  <div className="filter">
-                    <label>Período Inicial:</label>
-                    <input type="date" />
-                  </div>
-                  <div className="filter">
-                    <label>Período Final:</label>
-                    <input type="date" />
-                  </div>
-                  <div className="filter">
-                    <label>Por Departamento:</label>
-                    <select>
-                      <option value="suprimento">Suprimento</option>
-                      <option value="fiscal">Fiscal</option>
-                      <option value="producao">Produção</option>
-                      <option value="almoxarifado">Almoxarifado</option>
-                    </select>
-                  </div>
-                  <div className="filter">
-                    <label>Por Tipo de Erro:</label>
-                    <select>
-                      <option value="suprimento">Suprimento</option>
-                      <option value="fiscal">Fiscal</option>
-                      <option value="producao">Produção</option>
-                      <option value="almoxarifado">Almoxarifado</option>
-                      <option value="pcp">PCP</option>
-                      <option value="qualidade">Qualidade</option>
-                    </select>
-                  </div>
-                  <div className="filter">
-                    <label>Situação Documento Fiscal:</label>
-                    <select>
-                      <option value="pendente">Pendente</option>
-                      <option value="atualizado">Atualizado</option>
-                      <option value="cancelado">Cancelado</option>
-                    </select>
-                  </div>
-                  <div className="filter">
-                    <label>Localização Veículo:</label>
-                    <input type="text" />
-                  </div>
-                  <div className="filter">
-                    <label>Período de Tempo Documento Parado:</label>
-                    <input type="text" />
-                  </div>
+        <div className="modal" onClick={handleModalClick}>
+          <div className="modal-content">
+            <button className="modal-close" onClick={closeModal}>
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <h2 className="chart-title-modal">Detalhes Xml</h2>
+            <div className="modal-body">
+              <div className="filters">
+                <div className="filter">
+                  <label>Estabelecimento:</label>
+                  <input type="text" />
                 </div>
-                <button className="button-save">Salvar</button>
+                <div className="filter">
+                  <label>Código Fornecedor:</label>
+                  <input type="text" />
+                </div>
+                <div className="filter">
+                  <label>Tipo Documento Fiscal:</label>
+                  <select>
+                    <option value="">Selecione</option>
+                    <option value="nfe">NFe</option>
+                    <option value="nfs">Nfs</option>
+                    <option value="cte">CTe</option>
+                  </select>
+                </div>
+                <div className="filter">
+                  <label>Período Inicial:</label>
+                  <input type="date" />
+                </div>
+                <div className="filter">
+                  <label>Período Final:</label>
+                  <input type="date" />
+                </div>
+                <div className="filter">
+                  <label>Por Departamento:</label>
+                  <select>
+                    <option value="suprimento">Suprimento</option>
+                    <option value="fiscal">Fiscal</option>
+                    <option value="producao">Produção</option>
+                    <option value="almoxarifado">Almoxarifado</option>
+                  </select>
+                </div>
+                <div className="filter">
+                  <label>Por Tipo de Erro:</label>
+                  <select>
+                    <option value="suprimento">Suprimento</option>
+                    <option value="fiscal">Fiscal</option>
+                    <option value="producao">Produção</option>
+                    <option value="almoxarifado">Almoxarifado</option>
+                    <option value="pcp">PCP</option>
+                    <option value="qualidade">Qualidade</option>
+                  </select>
+                </div>
+                <div className="filter">
+                  <label>Situação Documento Fiscal:</label>
+                  <select>
+                    <option value="pendente">Pendente</option>
+                    <option value="atualizado">Atualizado</option>
+                    <option value="cancelado">Cancelado</option>
+                  </select>
+                </div>
+                <div className="filter">
+                  <label>Localização Veículo:</label>
+                  <input type="text" />
+                </div>
+                <div className="filter">
+                  <label>Período de Tempo Documento Parado:</label>
+                  <input type="text" />
+                </div>
               </div>
+              <button className="button-save">Salvar</button>
             </div>
           </div>
-        )}
+        </div>
+      )}
     </div>
   );
 };
