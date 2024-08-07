@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faCheck, faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { getStatusInfo, getTipoDocumentoInfo } from '../../utils';
 import './styleXmlRecebidos.css';
 
 const XmlRecebidos = () => {
@@ -519,30 +518,6 @@ const XmlRecebidos = () => {
     navigate(-1);
   };
 
-  const renderTableCell = (col, row) => {
-    if (col.name === 'Status') {
-      const { text, color } = getStatusInfo(row[col.name]);
-      return (
-        <td key={col.name}>
-          <span className="status-label" style={{ backgroundColor: color }}>{text}</span>
-        </td>
-      );
-    }
-    if (col.name === 'Tipo') {
-      const { text, color } = getTipoDocumentoInfo(row[col.name]);
-      return (
-        <td key={col.name}>
-          <span className="tipo-label" style={{ backgroundColor: color }}>{text}</span>
-        </td>
-      );
-    }
-    return (
-      <td key={col.name}>
-        {typeof row[col.name] === 'boolean' ? renderBooleanIcon(row[col.name]) : row[col.name]}
-      </td>
-    );
-  };
-
   return (
     <div className="page-container">
       <div className="comparative-parameters">
@@ -574,7 +549,11 @@ const XmlRecebidos = () => {
             <tbody>
               {chartData.rows && chartData.rows.slice(0, 11).map((row, index) => (
                 <tr key={index}>
-                  {chartData.columns.map((col, colIndex) => renderTableCell(col, row))}
+                      {chartData.columns.map((col, colIndex) => (
+                      <td key={colIndex}>
+                        {typeof row[col.name] === 'boolean' ? renderBooleanIcon(row[col.name]) : row[col.name]}
+                      </td>
+                    ))}
                   <td className="table-actions">
                     <button className="btn-details" onClick={() => navigateToDetails(index)}>Detalhes</button>
                   </td>
