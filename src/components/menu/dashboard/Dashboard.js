@@ -34,7 +34,7 @@ const Dashboard = () => {
             navigate(`/controle-chegada-empresa/${chartIndex}/${dataPointIndex}`);
           } else if (chartIndex === '7') {
             navigate(`/documentos-atualizados-dia/${chartIndex}/${dataPointIndex}`);
-          }                         
+          }
         }
       }
     };
@@ -65,10 +65,10 @@ const Dashboard = () => {
         dataLabels: {
           offset: -5,
           formatter: (val, opts) => {
-            return opts.w.globals.series[opts.seriesIndex]
+            return opts.w.globals.series[opts.seriesIndex];
           },
           style: {
-            colors: ['#FFF']
+            colors: ['#FFF'],
           },
         },
         donut: {
@@ -96,18 +96,20 @@ const Dashboard = () => {
       },
     },
     labels: [],
-    responsive: [{
-      breakpoint: 480,
-      options: {
-        chart: {
-          width: 200,
-        },
-        legend: {
-          position: 'bottom',
-          horizontalAlign: 'center',
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200,
+          },
+          legend: {
+            position: 'bottom',
+            horizontalAlign: 'center',
+          },
         },
       },
-    }],
+    ],
     legend: {
       show: true,
       position: 'bottom',
@@ -154,7 +156,16 @@ const Dashboard = () => {
         labels: ['Até 1 dia', 'Até 3 dias', 'Até 7 dias', 'Acima 7 dias'],
         colors: ['#375a7f', '#00a65a', '#f39c12', '#dd4b39'],
       },
-      title: "XML's Recebidos a (x Dias)"
+      title: "XML's Recebidos a (x Dias)",
+      filters: [
+        { label: 'Estabelecimento', type: 'text' },
+        { label: 'Tipo de Documento', type: 'select', options: ['NFe', 'CTe', 'NFSe'] },
+        { label: 'Fornecedor', type: 'text' },
+        { label: 'Dias Pendentes', type: 'number' },
+        { label: 'Localização', type: 'select', options: ['Em Trânsito', 'Na empresa', 'Dentro da Fábrica'] },
+        { label: 'Linha de Produtos', type: 'select', options: ['Produto 1', 'Produto 2', 'Produto 3'] },
+        { label: 'Área de Negócio', type: 'select', options: ['Suprimento', 'Fiscal', 'PCP', 'Qualidade'] },
+      ],
     },
     {
       series: [34, 23, 3],
@@ -163,7 +174,16 @@ const Dashboard = () => {
         labels: ['Fiscal', 'Suprimentos', 'PCP'],
         colors: ['#375a7f', '#00a65a', '#f39c12'],
       },
-      title: "Ocorrências por Área de Negócio"
+      title: 'Ocorrências por Área de Negócio',
+      filters: [
+        { label: 'Estabelecimento', type: 'text' },
+        { label: 'Área de Negócio', type: 'select', options: ['Suprimento', 'Fiscal', 'PCP', 'Qualidade'] },
+        { label: 'Tipo de Documento', type: 'select', options: ['NFe', 'CTe', 'NFSe'] },
+        { label: 'Fornecedor', type: 'text' },
+        { label: 'Dias Pendentes', type: 'number' },
+        { label: 'Localização', type: 'select', options: ['Em Trânsito', 'Na empresa', 'Dentro da Fábrica'] },
+        { label: 'Linha de Produtos', type: 'select', options: ['Produto 1', 'Produto 2', 'Produto 3'] },
+      ],
     },
     {
       series: [23, 16, 9, 9, 15, 9, 17],
@@ -172,7 +192,17 @@ const Dashboard = () => {
         labels: ['Falta Pedido Compra', 'Aprovação', 'Diferença Valor', 'Diferença Quantidade', 'Conversao Un. Medida', 'Falta Ordem Produção', 'Cadastro ERP Datasul'],
         colors: ['#375a7f', '#00a65a', '#f39c12', '#dd4b39', '#00c0ef', '#f39c12', '#8a8f98'],
       },
-      title: "Auditoria"
+      title: 'Auditoria',
+      filters: [
+        { label: 'Estabelecimento', type: 'text' },
+        { label: 'Tipo de Erro', type: 'select', options: ['Erro 1', 'Erro 2', 'Erro 3'] },
+        { label: 'Área de Negócio', type: 'select', options: ['Suprimento', 'Fiscal', 'PCP', 'Qualidade'] },
+        { label: 'Tipo de Documento', type: 'select', options: ['NFe', 'CTe', 'NFSe'] },
+        { label: 'Fornecedor', type: 'text' },
+        { label: 'Dias Pendentes', type: 'number' },
+        { label: 'Localização', type: 'select', options: ['Em Trânsito', 'Na empresa', 'Dentro da Fábrica'] },
+        { label: 'Linha de Produtos', type: 'select', options: ['Produto 1', 'Produto 2', 'Produto 3'] },
+      ],
     },
     {
       series: [180, 120, 45],
@@ -181,7 +211,17 @@ const Dashboard = () => {
         labels: ['Nfe', 'CTe', 'NFs'],
         colors: ['#375a7f', '#00a65a', '#f39c12'],
       },
-      title: "Ocorrências por Tipo de Doctos Fiscais"
+      title: 'Ocorrências por Tipo de Doctos Fiscais',
+      filters: [
+        { label: 'Estabelecimento', type: 'text' },
+        { label: 'Tipo de Documento', type: 'select', options: ['NFe', 'CTe', 'NFSe'] },
+        { label: 'Tipo de Erro', type: 'select', options: ['Erro 1', 'Erro 2', 'Erro 3'] },
+        { label: 'Área de Negócio', type: 'select', options: ['Suprimento', 'Fiscal', 'PCP', 'Qualidade'] },
+        { label: 'Fornecedor', type: 'text' },
+        { label: 'Dias Pendentes', type: 'number' },
+        { label: 'Localização', type: 'select', options: ['Em Trânsito', 'Na empresa', 'Dentro da Fábrica'] },
+        { label: 'Linha de Produtos', type: 'select', options: ['Produto 1', 'Produto 2', 'Produto 3'] },
+      ],
     },
     {
       series: [66, 20, 10, 14, 3, 24],
@@ -190,7 +230,17 @@ const Dashboard = () => {
         labels: ['Matéria Prima', 'Uso e Consumo', 'Aplicação Direta', 'Manutenção', 'Facility', 'Embalagens'],
         colors: ['#375a7f', '#00a65a', '#f39c12', '#dd4b39', '#00c0ef', '#8a8f98'],
       },
-      title: "Ocorrências por Linhas de Produtos"
+      title: 'Ocorrências por Linhas de Produtos',
+      filters: [
+        { label: 'Estabelecimento', type: 'text' },
+        { label: 'Linha de Produtos', type: 'select', options: ['Produto 1', 'Produto 2', 'Produto 3'] },
+        { label: 'Tipo de Documento', type: 'select', options: ['NFe', 'CTe', 'NFSe'] },
+        { label: 'Tipo de Erro', type: 'select', options: ['Erro 1', 'Erro 2', 'Erro 3'] },
+        { label: 'Área de Negócio', type: 'select', options: ['Suprimento', 'Fiscal', 'PCP', 'Qualidade'] },
+        { label: 'Fornecedor', type: 'text' },
+        { label: 'Dias Pendentes', type: 'number' },
+        { label: 'Localização', type: 'select', options: ['Em Trânsito', 'Na empresa', 'Dentro da Fábrica'] },
+      ],
     },
     {
       series: [80, 35, 60],
@@ -199,7 +249,17 @@ const Dashboard = () => {
         labels: ['Contagem', 'Betim', 'Curitiba'],
         colors: ['#375a7f', '#00a65a', '#f39c12'],
       },
-      title: "Fluxo Doc. Fiscais por Estabelecimento"
+      title: 'Fluxo Doc. Fiscais por Estabelecimento',
+      filters: [
+        { label: 'Estabelecimento', type: 'text' },
+        { label: 'Linha de Produtos', type: 'select', options: ['Produto 1', 'Produto 2', 'Produto 3'] },
+        { label: 'Tipo de Documento', type: 'select', options: ['NFe', 'CTe', 'NFSe'] },
+        { label: 'Tipo de Erro', type: 'select', options: ['Erro 1', 'Erro 2', 'Erro 3'] },
+        { label: 'Área de Negócio', type: 'select', options: ['Suprimento', 'Fiscal', 'PCP', 'Qualidade'] },
+        { label: 'Fornecedor', type: 'text' },
+        { label: 'Dias Pendentes', type: 'number' },
+        { label: 'Localização', type: 'select', options: ['Em Trânsito', 'Na empresa', 'Dentro da Fábrica'] },
+      ],
     },
     {
       series: [80, 12, 20],
@@ -208,7 +268,17 @@ const Dashboard = () => {
         labels: ['Em Trânsito', 'Na Empresa', 'Dentro da Fábrica'],
         colors: ['#375a7f', '#00a65a', '#f39c12'],
       },
-      title: "Controle Chegada na Empresa"
+      title: 'Controle Chegada na Empresa',
+      filters: [
+        { label: 'Estabelecimento', type: 'text' },
+        { label: 'Localização', type: 'select', options: ['Em Trânsito', 'Na empresa', 'Dentro da Fábrica'] },
+        { label: 'Linha de Produtos', type: 'select', options: ['Produto 1', 'Produto 2', 'Produto 3'] },
+        { label: 'Tipo de Documento', type: 'select', options: ['NFe', 'CTe', 'NFSe'] },
+        { label: 'Tipo de Erro', type: 'select', options: ['Erro 1', 'Erro 2', 'Erro 3'] },
+        { label: 'Área de Negócio', type: 'select', options: ['Suprimento', 'Fiscal', 'PCP', 'Qualidade'] },
+        { label: 'Fornecedor', type: 'text' },
+        { label: 'Dias Pendentes', type: 'number' },
+      ],
     },
     {
       series: [80, 12, 20],
@@ -217,7 +287,17 @@ const Dashboard = () => {
         labels: ['Nfe', 'CTe', 'NFSe'],
         colors: ['#375a7f', '#00a65a', '#f39c12'],
       },
-      title: "Documentos Atualizados no Dia"
+      title: 'Documentos Atualizados no Dia',
+      filters: [
+        { label: 'Estabelecimento', type: 'text' },
+        { label: 'Localização', type: 'select', options: ['Em Trânsito', 'Na empresa', 'Dentro da Fábrica'] },
+        { label: 'Linha de Produtos', type: 'select', options: ['Produto 1', 'Produto 2', 'Produto 3'] },
+        { label: 'Tipo de Documento', type: 'select', options: ['NFe', 'CTe', 'NFSe'] },
+        { label: 'Tipo de Erro', type: 'select', options: ['Erro 1', 'Erro 2', 'Erro 3'] },
+        { label: 'Área de Negócio', type: 'select', options: ['Suprimento', 'Fiscal', 'PCP', 'Qualidade'] },
+        { label: 'Fornecedor', type: 'text' },
+        { label: 'Dias Pendentes', type: 'number' },
+      ],
     },
   ];
 
@@ -229,7 +309,7 @@ const Dashboard = () => {
     setSelectedChart(null);
   };
 
-    const handleModalClick = (e) => {
+  const handleModalClick = (e) => {
     if (e.target.classList.contains('modal')) {
       closeModal();
     }
@@ -250,82 +330,38 @@ const Dashboard = () => {
           </div>
         </div>
       ))}
-       {selectedChart && (
-          <div className="modal" onClick={handleModalClick}>
-            <div className="modal-content">
-              <button className="modal-close" onClick={closeModal}>
-                <FontAwesomeIcon icon={faTimes} />
-              </button>
-              <h2 className="chart-title-modal">{selectedChart.title}</h2>
-              <div className="modal-body">
-                <div className="filters">
-                  <div className="filter">
-                    <label>Estabelecimento:</label>
-                    <input type="text" />
+      {selectedChart && (
+        <div className="modal" onClick={handleModalClick}>
+          <div className="modal-content">
+            <button className="modal-close" onClick={closeModal}>
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            <h2 className="chart-title-modal">{selectedChart.title}</h2>
+            <div className="modal-body">
+              <div className="filters">
+                {selectedChart.filters.map((filter, index) => (
+                  <div className="filter" key={index}>
+                    <label>{filter.label}:</label>
+                    {filter.type === 'text' && <input type="text" />}
+                    {filter.type === 'number' && <input type="number" />}
+                    {filter.type === 'select' && (
+                      <select>
+                        <option value="">Selecione</option>
+                        {filter.options.map((option, idx) => (
+                          <option key={idx} value={option.toLowerCase()}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                    )}
                   </div>
-                  <div className="filter">
-                    <label>Código Fornecedor:</label>
-                    <input type="text" />
-                  </div>
-                  <div className="filter">
-                    <label>Tipo Documento Fiscal:</label>
-                    <select>
-                      <option value="">Selecione</option>
-                      <option value="nfe">NFe</option>
-                      <option value="nfs">Nfs</option>
-                      <option value="cte">CTe</option>
-                    </select>
-                  </div>
-                  <div className="filter">
-                    <label>Período Inicial:</label>
-                    <input type="date" />
-                  </div>
-                  <div className="filter">
-                    <label>Período Final:</label>
-                    <input type="date" />
-                  </div>
-                  <div className="filter">
-                    <label>Por Departamento:</label>
-                    <select>
-                      <option value="suprimento">Suprimento</option>
-                      <option value="fiscal">Fiscal</option>
-                      <option value="producao">Produção</option>
-                      <option value="almoxarifado">Almoxarifado</option>
-                    </select>
-                  </div>
-                  <div className="filter">
-                    <label>Por Tipo de Erro:</label>
-                    <select>
-                      <option value="suprimento">Suprimento</option>
-                      <option value="fiscal">Fiscal</option>
-                      <option value="producao">Produção</option>
-                      <option value="almoxarifado">Almoxarifado</option>
-                      <option value="pcp">PCP</option>
-                      <option value="qualidade">Qualidade</option>
-                    </select>
-                  </div>
-                  <div className="filter">
-                    <label>Situação Documento Fiscal:</label>
-                    <select>
-                      <option value="pendente">Pendente</option>
-                      <option value="atualizado">Atualizado</option>
-                      <option value="cancelado">Cancelado</option>
-                    </select>
-                  </div>
-                  <div className="filter">
-                    <label>Localização Veículo:</label>
-                    <input type="text" />
-                  </div>
-                  <div className="filter">
-                    <label>Período de Tempo Documento Parado:</label>
-                    <input type="text" />
-                  </div>
-                </div>
-                <button className="button-save">Salvar</button>
+                ))}
               </div>
+              <button className="button-save">Salvar</button>
             </div>
           </div>
-        )}
+        </div>
+      )}
     </div>
   );
 };

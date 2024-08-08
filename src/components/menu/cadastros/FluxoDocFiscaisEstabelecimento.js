@@ -551,52 +551,52 @@ const FluxoDocFiscaisEstabelecimento = () => {
   const handleGoBack = () => {
     navigate(-1);
   };
-  
+
   return (
     <div className="page-container">
-    <div className="comparative-parameters">
-    <div className="header-comparative">
-        <h1>Fluxo Doc. Fiscais por Estabelecimento</h1>
-        <button className="btn-back" onClick={handleGoBack}>
-        <FontAwesomeIcon icon={faArrowLeft} /> Voltar
-        </button>
+      <div className="comparative-parameters">
+        <div className="header-comparative">
+          <h1>Fluxo Doc. Fiscais por Estabelecimento</h1>
+          <button className="btn-back" onClick={handleGoBack}>
+            <FontAwesomeIcon icon={faArrowLeft} /> Voltar
+          </button>
         </div>
-      <button className="btn-new">Criar Novo</button>
-      <div className="comparative-table-container">
-        <table className="comparative-table">
-          <thead>
-            <tr className='title-table'>
-              <th colSpan="10">Documento Fiscal</th>
-              <th colSpan="22">Auditoria</th>
-              <th colSpan="5">Situação do Documento</th>
-              <th>
-                <FontAwesomeIcon icon={faEllipsisH} className="config-icon" onClick={openModal} />
-              </th>
-            </tr>
-            <tr>
-              {chartData.columns && chartData.columns.map((col, index) => (
-                <th key={index}>{col.label}</th>
-              ))}
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {chartData.rows && chartData.rows.slice(0, 11).map((row, index) => (
-              <tr key={index}>
-                {chartData.columns.map((col, colIndex) => (
-                  <td key={colIndex}>
-                    {typeof row[col.name] === 'boolean' ? renderBooleanIcon(row[col.name]) : row[col.name]}
-                  </td>
-                ))}
-                <td className="table-actions">
-                  <button className="btn-details" onClick={() => navigateToDetails(index)}>Detalhes</button>
-                </td>
+        <button className="btn-new">Criar Novo</button>
+        <div className="comparative-table-container">
+          <table className="comparative-table">
+            <thead>
+              <tr className='title-table'>
+                <th colSpan="10">Documento Fiscal</th>
+                <th colSpan="22">Auditoria</th>
+                <th colSpan="5">Situação do Documento</th>
+                <th>
+                  <FontAwesomeIcon icon={faEllipsisH} className="config-icon" onClick={openModal} />
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      {isModalOpen && (
+              <tr>
+                {chartData.columns && chartData.columns.map((col, index) => (
+                  <th key={index}>{col.label}</th>
+                ))}
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              {chartData.rows && chartData.rows.slice(0, 11).map((row, index) => (
+                <tr key={index}>
+                  {chartData.columns.map((col, colIndex) => (
+                    <td key={colIndex}>
+                      {typeof row[col.name] === 'boolean' ? renderBooleanIcon(row[col.name]) : row[col.name]}
+                    </td>
+                  ))}
+                  <td className="table-actions">
+                    <button className="btn-details" onClick={() => navigateToDetails(index)}>Detalhes</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {isModalOpen && (
           <div className="modal">
             <div className="modal-content">
               <button className="modal-close" onClick={closeModal}>
@@ -607,11 +607,19 @@ const FluxoDocFiscaisEstabelecimento = () => {
                 <div className="filters">
                   <div className="filter">
                     <label>Estabelecimento:</label>
-                    <input type="text" />
+                    <select>
+                      <option value="estabelecimento1">Estabelecimento 1</option>
+                      <option value="estabelecimento2">Estabelecimento 2</option>
+                      <option value="estabelecimento3">Estabelecimento 3</option>
+                    </select>
                   </div>
                   <div className="filter">
-                    <label>Código Fornecedor:</label>
-                    <input type="text" />
+                    <label>Linha de Produtos:</label>
+                    <select>
+                      <option value="grupo1">Grupo 1</option>
+                      <option value="grupo2">Grupo 2</option>
+                      <option value="grupo3">Grupo 3</option>
+                    </select>
                   </div>
                   <div className="filter">
                     <label>Tipo Documento Fiscal:</label>
@@ -623,24 +631,32 @@ const FluxoDocFiscaisEstabelecimento = () => {
                     </select>
                   </div>
                   <div className="filter">
-                    <label>Período Inicial:</label>
-                    <input type="date" />
+                    <label>Fornecedor:</label>
+                    <input type="text" />
                   </div>
                   <div className="filter">
-                    <label>Período Final:</label>
-                    <input type="date" />
+                    <label>Dias Pendentes:</label>
+                    <input type="number" />
                   </div>
                   <div className="filter">
-                    <label>Por Departamento:</label>
+                    <label>Localização:</label>
                     <select>
-                      <option value="suprimento">Suprimento</option>
-                      <option value="fiscal">Fiscal</option>
-                      <option value="producao">Produção</option>
-                      <option value="almoxarifado">Almoxarifado</option>
+                      <option value="emTransito">Em Trânsito</option>
+                      <option value="naEmpresa">Na Empresa</option>
+                      <option value="dentroDaFabrica">Dentro da Fábrica</option>
                     </select>
                   </div>
                   <div className="filter">
-                    <label>Por Tipo de Erro:</label>
+                    <label>Área de Negócio:</label>
+                    <select>
+                      <option value="suprimento">Suprimento</option>
+                      <option value="fiscal">Fiscal</option>
+                      <option value="pcp">PCP</option>
+                      <option value="qualidade">Qualidade</option>
+                    </select>
+                  </div>
+                  <div className="filter">
+                    <label>Tipo de Erro:</label>
                     <select>
                       <option value="suprimento">Suprimento</option>
                       <option value="fiscal">Fiscal</option>
@@ -650,29 +666,13 @@ const FluxoDocFiscaisEstabelecimento = () => {
                       <option value="qualidade">Qualidade</option>
                     </select>
                   </div>
-                  <div className="filter">
-                    <label>Situação Documento Fiscal:</label>
-                    <select>
-                      <option value="pendente">Pendente</option>
-                      <option value="atualizado">Atualizado</option>
-                      <option value="cancelado">Cancelado</option>
-                    </select>
-                  </div>
-                  <div className="filter">
-                    <label>Localização Veículo:</label>
-                    <input type="text" />
-                  </div>
-                  <div className="filter">
-                    <label>Período de Tempo Documento Parado:</label>
-                    <input type="text" />
-                  </div>
                 </div>
                 <button className="button-save">Salvar</button>
               </div>
             </div>
           </div>
         )}
-    </div>
+      </div>
     </div>
   );
 };
