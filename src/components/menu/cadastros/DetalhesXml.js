@@ -66,7 +66,7 @@ const DetalhesXml = () => {
       { name: 'Seguro', label: 'Seguro' },
       { name: 'Vlfrete', label: 'Vl Frete' },
       { name: 'OutrasDespesas', label: 'Outras Desp.' },
-      { name: 'Acoes', label: 'Ações' }, // Nova coluna
+      { name: 'Acoes', label: 'Ações' },
     ],
     rows: [
       {
