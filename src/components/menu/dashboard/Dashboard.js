@@ -363,7 +363,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="chart-wrapper">
-            <Chart options={chartData.options} series={chartData.series} type="donut" height="296" />
+            <Chart options={chartData.options} series={chartData.series} type="donut" height="320" />
           </div>
         </div>
       ))}
