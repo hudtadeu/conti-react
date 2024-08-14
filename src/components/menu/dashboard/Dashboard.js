@@ -34,6 +34,10 @@ const Dashboard = () => {
             navigate(`/controle-chegada-empresa/${chartIndex}/${dataPointIndex}`);
           } else if (chartIndex === '7') {
             navigate(`/documentos-atualizados-dia/${chartIndex}/${dataPointIndex}`);
+          } else if (chartIndex === '8') {
+            navigate(`/documentos-nao-corrigidos/${chartIndex}/${dataPointIndex}`);
+          } else if (chartIndex === '9') {
+            navigate(`/pendencias-comprador/${chartIndex}/${dataPointIndex}`);
           }
         }
       }
@@ -297,6 +301,39 @@ const Dashboard = () => {
         { label: 'Área de Negócio', type: 'select', options: ['Suprimento', 'Fiscal', 'PCP', 'Qualidade'] },
         { label: 'Fornecedor', type: 'text' },
         { label: 'Dias Pendentes', type: 'number' },
+      ],
+    },
+    {
+      series: [45, 20],
+      options: {
+        ...commonOptions,
+        labels: ['Atualizados', 'Não Corrigidos'],
+        colors: ['#375a7f', '#dd4b39'],
+      },
+      title: 'Documentos Atualizados e Não Corrigidos',
+      filters: [
+        { label: 'Estabelecimento', type: 'text' },
+        { label: 'Tipo de Documento', type: 'select', options: ['NFe', 'CTe', 'NFSe'] },
+        { label: 'Fornecedor', type: 'text' },
+        { label: 'Dias Pendentes', type: 'number' },
+        { label: 'Área de Negócio', type: 'select', options: ['Suprimento', 'Fiscal', 'PCP', 'Qualidade'] },
+      ],
+    },
+    {
+      series: [30, 70],
+      options: {
+        ...commonOptions,
+        labels: ['Pendentes', 'Resolvidos'],
+        colors: ['#f39c12', '#00a65a'],
+      },
+      title: 'Pendências do Comprador',
+      filters: [
+        { label: 'Estabelecimento', type: 'text' },
+        { label: 'Comprador', type: 'text' },
+        { label: 'Tipo de Documento', type: 'select', options: ['NFe', 'CTe', 'NFSe'] },
+        { label: 'Fornecedor', type: 'text' },
+        { label: 'Dias Pendentes', type: 'number' },
+        { label: 'Área de Negócio', type: 'select', options: ['Suprimento', 'Fiscal', 'PCP', 'Qualidade'] },
       ],
     },
   ];
